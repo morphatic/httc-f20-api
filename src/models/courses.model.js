@@ -5,11 +5,15 @@ const DataTypes = Sequelize.DataTypes
 
 module.exports = function (app) {
   const sequelizeClient = app.get('sequelizeClient')
-  const subjects = sequelizeClient.define('subjects', {
-    description: {
+  const courses = sequelizeClient.define('courses', {
+    title: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
+    },
+    difficulty: {
+      type: DataTypes.ENUM('Introductory', 'Intermediate', 'Advanced'),
+      allowNull: false,
+      defaultValue: 'Introductory',
     },
   }, {
     hooks: {
@@ -20,11 +24,11 @@ module.exports = function (app) {
   })
 
   // eslint-disable-next-line no-unused-vars
-  subjects.associate = function (models) {
+  courses.associate = function (models) {
     // Define associations here
     // See http://docs.sequelizejs.com/en/latest/docs/associations/
-    subjects.belongsToMany(models.courses, { through: 'courses_subjects' })
+    courses.belongsToMany(models.subjects, { through: 'courses_subjects' })
   }
 
-  return subjects
+  return courses
 }
