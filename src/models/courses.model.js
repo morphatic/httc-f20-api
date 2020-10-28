@@ -28,6 +28,7 @@ module.exports = function (app) {
     // Define associations here
     // See http://docs.sequelizejs.com/en/latest/docs/associations/
     courses.belongsToMany(models.subjects, { through: 'courses_subjects' })
+    courses.belongsToMany(models.students, { through: 'courses_students' })
   }
 
   return courses
