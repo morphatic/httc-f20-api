@@ -46,6 +46,7 @@
     "cors": "^2.8.5",
     "feathers-sequelize": "^6.2.0",
     "helmet": "^4.1.1",
+    "mysql2": "^2.2.5",
     "sequelize": "^6.3.5",
     "serve-favicon": "^2.5.0",
     "sqlite3": "^5.0.0",
